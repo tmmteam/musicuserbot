@@ -1,6 +1,6 @@
 pyrogram==2.0.106
-pytgcalls==1.0.0
-ntgcalls==1.2.3
+tgcrypto==1.2.5
+pytgcalls==3.0.0.dev24
 aiohttp==3.9.5
-python-dotenv==1.0.0
-tgcrypto
+yt-dlp==2026.3.31
+git+https://github.com/arshalalsaghir/py-yt-search.git
