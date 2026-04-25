@@ -149,6 +149,7 @@ async def play_next(chat_id):
             current.clear()
             return
         title, url, dur_sec, dur_str, req_by = playlist.get()
+
     paused = False
     current = {
         "title": title,
@@ -157,13 +158,15 @@ async def play_next(chat_id):
         "duration_str": dur_str,
         "requested_by": req_by,
         "chat_id": chat_id,
-        "message_id": current.get("message_id")  # keep existing if any
+        "message_id": current.get("message_id")
     }
+
     await send_now_playing(chat_id, title, dur_sec, dur_str, req_by, start_updater=True)
+
     try:
-        await call.change_stream(chat_id, AudioPiped(url, AudioQuality.HIGH))
+        await call.change_stream(chat_id, AudioPiped(url))
     except:
-        await call.play(chat_id, AudioPiped(url, AudioQuality.HIGH))
+        await call.play(chat_id, AudioPiped(url))
 
 # ---------- .play COMMAND ----------
 @app.on_message(filters.command("play") & (filters.private | filters.group))
